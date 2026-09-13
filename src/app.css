@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+::selection {
+	background: #e7a93c;
+	color: #1c2321;
+}
+
+:focus-visible {
+	outline: 2px solid #1f4b4a;
+	outline-offset: 2px;
+}
+
+/* Ambient depth layer — a fixed, very low-opacity radial glow behind every
+   page. Costs nothing (pure CSS, no repaint on scroll) but keeps the site
+   feeling dimensional even on pages with no 3D canvas. */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background:
+		radial-gradient(circle at 15% 10%, rgba(31, 75, 74, 0.08), transparent 40%),
+		radial-gradient(circle at 85% 30%, rgba(231, 169, 60, 0.1), transparent 35%),
+		radial-gradient(circle at 50% 90%, rgba(180, 85, 47, 0.06), transparent 40%);
+}
