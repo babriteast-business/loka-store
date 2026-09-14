@@ -14,6 +14,10 @@ create table if not exists products (
 	stock integer not null default 0,
 	bestseller boolean not null default false,
 	units_sold integer not null default 0,
+	weight_grams integer not null default 300,
+	length_cm integer not null default 12,
+	breadth_cm integer not null default 10,
+	height_cm integer not null default 6,
 	source_note text, -- e.g. supplier name/link, for your own dropship tracking
 	created_at timestamptz not null default now()
 );
@@ -37,6 +41,13 @@ create table if not exists orders (
 	items jsonb not null,
 	total_inr integer not null,
 	status text not null default 'pending', -- pending | paid | fulfilled | cancelled
+	shiprocket_order_id text,
+	shiprocket_shipment_id text,
+	awb_code text,
+	courier_name text,
+	label_url text,
+	shipment_status text default 'not_created', -- not_created | created | pickup_scheduled | failed
+	shipment_error text,
 	created_at timestamptz not null default now()
 );
 

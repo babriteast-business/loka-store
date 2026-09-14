@@ -35,9 +35,12 @@
 	{:else}
 		<div class="flex items-center justify-between">
 			<h1 class="font-display text-2xl">Products ({data.products.length})</h1>
-			<form method="POST" action="?/logout" use:enhance>
-				<button class="text-sm text-ink/50 underline">Log out</button>
-			</form>
+			<div class="flex items-center gap-4">
+				<a href="/admin/orders" class="text-sm text-teal underline">Orders & Shipments</a>
+				<form method="POST" action="?/logout" use:enhance>
+					<button class="text-sm text-ink/50 underline">Log out</button>
+				</form>
+			</div>
 		</div>
 
 		<h2 class="mt-10 font-display text-lg">Add a product</h2>

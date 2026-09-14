@@ -97,11 +97,10 @@
 		>
 			{paying ? 'Processing…' : 'Pay with Razorpay'}
 		</button>
-	
 	</div>
+
 	<p class="mt-6 text-center text-xs text-ink/50">
 		Questions before you pay? Call or WhatsApp
 		<a href={siteInfo.telUrl} class="text-teal underline">{siteInfo.phoneDisplay}</a>
 	</p>
 </section>
-

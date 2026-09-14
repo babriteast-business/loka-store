@@ -22,9 +22,10 @@ SvelteKit + Threlte (3D) + Tailwind + Supabase + Razorpay.
 - **`supabase/schema.sql`** — run this once in your Supabase project's SQL editor.
 - **`supabase/migration_001_bestseller.sql`** — only needed if you already ran
   `schema.sql` before the bestseller/units_sold columns existed. Safe to re-run.
-- **`supabase/seed.sql`** — 10 sample products across all 5 categories, so the store isn't
-  empty on first run. Replace the placeholder images and details with your real listings
-  (or delete them from `/admin` once you've added your own).
+- **`supabase/seed.sql`** — 50 sample products (10 per category), so the store isn't empty
+  on first run. Every product's image is a self-generated isometric 3D box render (embedded
+  directly as a base64 SVG — no external hosting needed, nothing to break). Replace
+  `image_url` with real product photos once you have them, from `/admin` or SQL.
 
 ## Conversion features (built in, not guaranteed sales)
 
@@ -91,6 +92,14 @@ Open http://localhost:5173.
 Go to `/admin`, log in with your `ADMIN_PASSWORD`, and use the form — no SQL needed. Each
 product includes an optional "supplier note" field for your own reference (e.g. the
 AliExpress/1688 listing link), which never appears on the public storefront.
+
+## Automated shipping (Shiprocket)
+
+Paid orders automatically get a Shiprocket shipment created — order, courier,
+AWB, pickup request — no manual booking. See **`SHIPROCKET_SETUP.md`** for
+setup steps and exactly what's automated vs. what still needs you (spoiler:
+printing the label and handing the package to the courier is still human work).
+Manage shipment status and retries at **`/admin/orders`**.
 
 ## Deploying
 
