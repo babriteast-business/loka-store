@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { cart } from '$lib/stores/cart';
+	import { siteInfo } from '$lib/siteInfo';
 
 	$: itemCount = $cart.reduce((sum, i) => sum + i.qty, 0);
 </script>
@@ -30,8 +31,23 @@
 	</main>
 
 	<footer class="border-t border-line px-6 py-10 text-sm text-ink/70">
-		<div class="mx-auto max-w-6xl">
-			<p>Loka &mdash; curated finds, sourced honestly, delivered across India.</p>
+		<div class="mx-auto grid max-w-6xl gap-8 sm:grid-cols-3">
+			<div>
+				<p class="font-display text-lg text-ink">Loka</p>
+				<p class="mt-2">Curated finds, sourced honestly, delivered across India.</p>
+			</div>
+			<div>
+				<p class="font-medium text-ink">Contact & Support</p>
+				<p class="mt-2">{siteInfo.address.line1}</p>
+				<p>{siteInfo.address.city}, {siteInfo.address.state} - {siteInfo.address.pincode}</p>
+				<a href={siteInfo.telUrl} class="mt-1 block text-teal">{siteInfo.phoneDisplay}</a>
+				<a href="/contact" class="mt-2 inline-block underline">Full contact details →</a>
+			</div>
+			<div>
+				<p class="font-medium text-ink">Operated by</p>
+				<p class="mt-2">{siteInfo.businessName}</p>
+				<p>{siteInfo.servicesNote}</p>
+			</div>
 		</div>
 	</footer>
 </div>
