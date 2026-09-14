@@ -98,6 +98,8 @@ export async function generateLabel(shipmentId: string): Promise<string> {
 export async function requestPickup(shipmentId: string) {
 	return sr('/courier/generate/pickup', { shipment_id: [shipmentId] });
 }
+
+export async function createShipment(input: ShipmentInput) {
 	const addr = parseAddress(input.deliveryAddress);
 	if (!addr.pincode) {
 		throw new Error('Could not find a 6-digit pincode in the delivery address');
