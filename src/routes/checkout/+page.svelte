@@ -104,4 +104,4 @@
 		<a href={siteInfo.telUrl} class="text-teal underline">{siteInfo.phoneDisplay}</a>
 	</p>
 </section>
-</section>
+
